@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block body_block %}
+      {% if user.is_authenticated %}
+      <h3>Hi {{user.username}}!! click on addHouse to add Houses</h3>
+      {% endif %}
+{% endblock %}
