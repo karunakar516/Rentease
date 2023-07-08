@@ -11,6 +11,7 @@ class house(models.Model):
     price=models.IntegerField(null=True)
     owner=models.CharField(max_length=264)
     contact=models.PositiveBigIntegerField()
+    img1=models.ImageField(null=True,upload_to='house_pics')
     def __str__(self):
         return str(self.owner)
 

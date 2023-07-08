@@ -33,7 +33,8 @@ class addhouse(forms.ModelForm):
     type=forms.CharField(widget=forms.RadioSelect(choices=CHOICES))
     apartment=forms.CharField()
     address=forms.CharField()
+    img1=forms.ImageField()
     class Meta:
         model=house
-        fields=('owner','contact','type','address','price','apartment')
+        fields=('owner','contact','type','address','price','apartment','img1')
 

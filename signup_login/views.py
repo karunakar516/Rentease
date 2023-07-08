@@ -15,12 +15,10 @@ def user_logout(request):
 @login_required
 def addhouse1(request):
     if request.method=="POST":
-        ahform=addhouse(data=request.POST)
+        ahform=addhouse(request.POST,request.FILES)
         if ahform.is_valid:
             ahform.save()
             return HttpResponseRedirect(reverse('signup_login:home'))
-        else:
-            print(ahform.errors)
     else:
         ahform=addhouse()
         return render(request,'addHouse.html',{'form':ahform})
@@ -40,8 +38,6 @@ def register(request):
             registered=True
             return HttpResponseRedirect(reverse('signup_login:home'))
         else:
-            print(form.errors)
-            print(formsss.errors)
             return HttpResponse('invalid signup')
     else:
         form=signup_form()
