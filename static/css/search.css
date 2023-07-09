@@ -1,0 +1,18 @@
+.card {
+    margin-bottom: 20px;
+    display: flex;
+  }
+  .slideshow {
+    width: 50%;
+    overflow: hidden;
+    float:left;
+  }
+  
+  .slideshow img {
+    width: 50%;
+    height: auto; 
+    display: none;
+  }
+  .slideshow img:first-child {
+    display: block;
+  }

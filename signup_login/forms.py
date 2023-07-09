@@ -34,7 +34,9 @@ class addhouse(forms.ModelForm):
     apartment=forms.CharField()
     address=forms.CharField()
     img1=forms.ImageField()
+    img2=forms.ImageField()
+    img3=forms.ImageField()
     class Meta:
         model=house
-        fields=('owner','contact','type','address','price','apartment','img1')
+        fields=('owner','contact','type','address','price','apartment','img1','img2','img3')
 
