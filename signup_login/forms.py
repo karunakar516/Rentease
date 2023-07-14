@@ -40,3 +40,10 @@ class addhouse(forms.ModelForm):
         model=house
         fields=('owner','contact','type','address','price','apartment','img1','img2','img3')
 
+class password_reset(forms.Form):
+    password=forms.CharField(widget=forms.PasswordInput(attrs={'min':6,'id':'password','name':'password'}))
+    reppass=forms.CharField(widget=forms.PasswordInput(attrs={'min':6,'id':'reppass','name':'reppass'}))
+    def clean(self):
+        x=super().clean()
+        if x['password']!=x['reppass']:
+            raise ValidationError("passwords do not match")

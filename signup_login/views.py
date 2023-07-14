@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .forms import signup_form,formss,addhouse
+from .forms import signup_form,formss,addhouse,password_reset
 from .models import house
 from django.contrib.auth import authenticate,login,logout
 def index(request):
@@ -22,7 +22,21 @@ def addhouse1(request):
     else:
         ahform=addhouse()
         return render(request,'addHouse.html',{'form':ahform})
-
+@login_required
+def passreset(request):
+    if request.method=="POST":
+        user=request.user
+        if user.is_active:
+            password=request.POST.get('password')
+            user.set_password(password)
+            user.save()
+            login(request,user)
+            return HttpResponseRedirect(reverse('signup_login:home'))
+        else:
+            return HttpResponse('nope')
+    else:
+        form=password_reset()
+        return render(request,'password-reset.html',{'form':form})
 def register(request):
     registered=False
     if request.method=='POST':
