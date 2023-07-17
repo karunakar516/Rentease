@@ -5,6 +5,7 @@ from django.urls import reverse
 from .forms import signup_form,formss,addhouse,password_reset
 from .models import house
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import User
 def index(request):
     
     return render(request,'user-new.html')
@@ -67,6 +68,13 @@ def user_login(request):
     if request.method=='POST':
         un=request.POST.get('username_login')
         pwd=request.POST.get('password_login')
+        x=User.objects.all()
+        c=0
+        for i in x:
+            if i.username==un:
+                c+=1
+        if c==0:
+            return HttpResponse("no user with entered username")
         user=authenticate(username=un,password=pwd)
         if user:
             if user.is_active:
@@ -75,7 +83,7 @@ def user_login(request):
             else:
                 return HttpResponse('account not active')
         else:
-            return HttpResponse('invalid login!')  
+            return HttpResponse('Password Not Correct')  
     else:
         return render(request,'login-new.html',{'login':True})
 def search(request):
