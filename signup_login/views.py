@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from random import randint
 from rentease import settings
 from django.core.mail import send_mail
+from .models import current_signup
 def index(request):
     return render(request,'user-new.html')
 @login_required
@@ -43,20 +44,24 @@ def passreset(request):
 def otpverify(request):
     if request.method=='POST':
         xx=request.POST.get('otp')
-        if int(xx)==int(x):
-            form=signup_form({'username':username,'password':password,'email':email,'reppass':reppass})
-            formsss=formss(data=request.POST)
-            if form.is_valid() and formsss.is_valid():
-                user=form.save()
-                user.set_password(user.password)
-                user.save()
-                profile=formsss.save(commit=False)
-                profile.user=user
-                profile.save()
-                registered=True
-                return HttpResponseRedirect(reverse('signup_login:home'))
-            else:
-                return HttpResponse('invalid signup')
+        yy=request.POST.get('username')
+        xnxx=current_signup.objects.all()
+        for i in xnxx:
+            if int(i.x)==int(xx) and yy==i.username:
+                form=signup_form({'username':i.username,'password':i.password,'email':i.email,'reppass':i.reppass})
+                formsss=formss(data=request.POST)
+                if form.is_valid() and formsss.is_valid():
+                    user=form.save()
+                    user.set_password(user.password)
+                    user.save()
+                    profile=formsss.save(commit=False)
+                    profile.user=user
+                    profile.save()
+                    registered=True
+                    del i
+                    return HttpResponseRedirect(reverse('signup_login:home'))
+                else:
+                    return HttpResponse('invalid signup')
         else:
             return HttpResponse("wrong otp")
 def register(request):
@@ -64,19 +69,23 @@ def register(request):
     registered=False
     if request.method=='POST':
         otp=randint(1000,9999)
-        global x
         x=otp
-        global username , password, email ,reppass
         username=request.POST.get('username')
         password=request.POST.get('password')
         email=request.POST.get('email')
         reppass=request.POST.get('reppass')
+        xy=User.objects.all()
+        for i in xy:
+            if i.email==email or i.username==username:
+                return HttpResponse("username already exists")
+        xa=current_signup(username=username,password=password,reppass=reppass,email=email,x=x)
+        xa.save(True)
         subject="Rentease!!"
-        message="Hello!!"+request.POST.get('username')+"Your OTP is"+str(otp)+"\n enter in your link to create account"
+        message="Hi,"+"\n" +request.POST.get('username')+" tried to signup for an account in RentEase with "+request.POST.get('email')+"If it was you,enter the confirmation code in the app\n"+"\n"+str(x)
         from_email=settings.EMAIL_HOST_USER
         to_mail=[request.POST.get('email')]
         send_mail(subject,message,from_email,to_mail)
-        return render(request,'otp.html')
+        return render(request,'otp.html',{'username':username})
     else:
         form=signup_form()
         formsss=formss()

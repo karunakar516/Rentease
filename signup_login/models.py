@@ -17,3 +17,9 @@ class house(models.Model):
     def __str__(self):
         return str(self.owner)
 
+class current_signup(models.Model):
+    username=models.CharField(max_length=264)
+    password=models.CharField(max_length=264)
+    reppass=models.CharField(max_length=264)
+    email=models.EmailField(max_length=264)
+    x=models.IntegerField()
