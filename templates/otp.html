@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  action="{% url 'signup_login:otpverify' %}" method="post">
+        {% csrf_token %}
+        enter OTP: <input type="number" min="1000" max="9999" name="otp">
+        <input type="submit" value="verify">
+    </form>
+</body>
+</html>

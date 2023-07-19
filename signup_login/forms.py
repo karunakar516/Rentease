@@ -3,17 +3,16 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from .models import Signup,house
 class signup_form(forms.ModelForm):
-    username=forms.CharField(widget=forms.TextInput(attrs={ 'id':"signup-user" ,'type':"text", 'class':"input", 'placeholder':"Create your Username"}))
+    username=forms.CharField(widget=forms.TextInput(attrs={ 'id':"signup-user" ,'type':"text", 'class':"input", 'placeholder':"Create your Username",'name':'username'}))
     password=forms.CharField(widget=forms.PasswordInput(attrs={'class':'input','id':'signup-pass','type':'password', 'placeholder':"enter your password"}))
     reppass=forms.CharField(widget=forms.PasswordInput(attrs={'class':'input','id':'repeat-pass','type':'password','placeholder':"confirm password"}))
-    email=forms.EmailField(widget=forms.EmailInput(attrs={'id':"signup-email", 'type':"text", 'class':"input", 'placeholder':"Enter your email address"}))
+    email=forms.EmailField(widget=forms.EmailInput(attrs={'id':"signup-email", 'type':"text", 'class':"input", 'placeholder':"Enter your email address",'name':'email'}))
     def clean(self):
         x=super().clean()
         pas=x['password']
         rep=x['reppass']
         if pas!=rep:
             raise ValidationError("Passwords do not match")
-
     class Meta:
         model=User
         fields=('username','password','reppass','email')

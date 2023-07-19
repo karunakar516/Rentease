@@ -6,8 +6,10 @@ from .forms import signup_form,formss,addhouse,password_reset
 from .models import house
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
+from random import randint
+from rentease import settings
+from django.core.mail import send_mail
 def index(request):
-    
     return render(request,'user-new.html')
 @login_required
 def user_logout(request):
@@ -38,22 +40,43 @@ def passreset(request):
     else:
         form=password_reset()
         return render(request,'password-reset.html',{'form':form})
+def otpverify(request):
+    if request.method=='POST':
+        xx=request.POST.get('otp')
+        if int(xx)==int(x):
+            form=signup_form({'username':username,'password':password,'email':email,'reppass':reppass})
+            formsss=formss(data=request.POST)
+            if form.is_valid() and formsss.is_valid():
+                user=form.save()
+                user.set_password(user.password)
+                user.save()
+                profile=formsss.save(commit=False)
+                profile.user=user
+                profile.save()
+                registered=True
+                return HttpResponseRedirect(reverse('signup_login:home'))
+            else:
+                return HttpResponse('invalid signup')
+        else:
+            return HttpResponse("wrong otp")
 def register(request):
+    global registered
     registered=False
     if request.method=='POST':
-        form=signup_form(data=request.POST)
-        formsss=formss(data=request.POST)
-        if form.is_valid() and formsss.is_valid():
-            user=form.save()
-            user.set_password(user.password)
-            user.save()
-            profile=formsss.save(commit=False)
-            profile.user=user
-            profile.save()
-            registered=True
-            return HttpResponseRedirect(reverse('signup_login:home'))
-        else:
-            return HttpResponse('invalid signup')
+        otp=randint(1000,9999)
+        global x
+        x=otp
+        global username , password, email ,reppass
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        email=request.POST.get('email')
+        reppass=request.POST.get('reppass')
+        subject="Rentease!!"
+        message="Hello!!"+request.POST.get('username')+"Your OTP is"+str(otp)+"\n enter in your link to create account"
+        from_email=settings.EMAIL_HOST_USER
+        to_mail=[request.POST.get('email')]
+        send_mail(subject,message,from_email,to_mail)
+        return render(request,'otp.html')
     else:
         form=signup_form()
         formsss=formss()
