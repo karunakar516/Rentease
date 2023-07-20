@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
 # from .views import RegisterView
-from .views import register,index,user_login,user_logout,addhouse1,search,passreset,otpverify
+from .views import register,index,user_login,user_logout,addhouse1,search,passreset,otpverify,deleteacc
 app_name='signup_login'
 urlpatterns = [
     path('',index,name='home'),
@@ -11,5 +11,6 @@ urlpatterns = [
     path('addhouse',addhouse1,name='addhouse'),
     path('search',search,name='search'),
     path('reset-password',passreset,name='passwordreset'),
-    path('otp-verify',otpverify,name='otpverify')
+    path('otp-verify',otpverify,name='otpverify'),
+    path('deleteacc',deleteacc,name='deleteacc'),
 ]

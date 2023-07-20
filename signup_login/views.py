@@ -17,6 +17,17 @@ def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('signup_login:home'))
 @login_required
+def deleteacc(request):
+    if request.method=='POST':
+        user=request.user
+        username=request.POST.get('username')
+        if username==user.username:
+            x=User.objects.get(username=username)
+            x.delete()
+            return HttpResponseRedirect(reverse('signup_login:home'))
+    else:
+        return render(request,'deleteacc.html')
+@login_required
 def addhouse1(request):
     if request.method=="POST":
         ahform=addhouse(request.POST,request.FILES)
@@ -57,8 +68,7 @@ def otpverify(request):
                     profile=formsss.save(commit=False)
                     profile.user=user
                     profile.save()
-                    registered=True
-                    del i
+                    i.delete()
                     return HttpResponseRedirect(reverse('signup_login:home'))
                 else:
                     return HttpResponse('invalid signup')
