@@ -8,7 +8,7 @@
 <body>
     <form  action="{% url 'signup_login:otpverify' %}" method="post">
         {% csrf_token %}
-        Username:<input readonly type="text" name="username" value="{{ username }}">
+        Username:<input readonly type="text" name="username" value="{{ username }}"><br>
         enter OTP: <input type="number" min="1000" max="9999" name="otp">
         <input type="submit" value="verify">
     </form>
