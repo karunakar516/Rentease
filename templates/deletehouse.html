@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/addHouse.css' %}">
+</head>
+<body>
+  <form method="post" >
+    {% csrf_token %}
+    enter houseid:<input type="number" placeholder="enter any houseid of your houses" name="houseid">
+    <input type="submit" value="delete">
+  </form>
+    
+</div>
+    </body>
+</html>

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from random import randint
 from rentease import settings
 from django.core.mail import send_mail
-from .models import current_signup
+from .models import current_signup,house
 def index(request):
     return render(request,'user-new.html')
 @login_required
@@ -35,7 +35,7 @@ def addhouse1(request):
             ahform.save()
             return HttpResponseRedirect(reverse('signup_login:home'))
     else:
-        ahform=addhouse()
+        ahform=addhouse(initial={'userid':request.user.username})
         return render(request,'addHouse.html',{'form':ahform})
 @login_required
 def passreset(request):
@@ -52,6 +52,24 @@ def passreset(request):
     else:
         form=password_reset()
         return render(request,'password-reset.html',{'form':form})
+@login_required
+def myhouses(request):
+    userid=request.user.username
+    x=house.objects.all()
+    y=[]
+    for i in x:
+        if i.userid==userid:
+            y.append(i)
+    return render(request,'myhouse.html',{'houses':y})
+@login_required
+def house_deletion(request):
+    if(request.method=='POST'):
+        userid=request.user.username
+        x=house.objects.get(userid=userid,houseid=request.POST.get('houseid'))
+        x.delete()
+        return HttpResponseRedirect(reverse('signup_login:home'))
+    else:
+        return render(request,'deletehouse.html')
 def otpverify(request):
     if request.method=='POST':
         xx=request.POST.get('otp')

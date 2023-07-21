@@ -23,6 +23,8 @@ class formss(forms.ModelForm):
 class addhouse(forms.ModelForm):
     owner=forms.CharField(widget=forms.TextInput(attrs={'type':'text'}))
     contact=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'type':'number'}))
+    userid=forms.CharField(widget=forms.TextInput(attrs={'readonly':True}))
+    houseid=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'placeholder':'make sure your houseid wont match with your previous houses'}))
     CHOICES=[
         ('1BHK','1BHK'),
         ('2BHK','2BHK'),
@@ -37,7 +39,7 @@ class addhouse(forms.ModelForm):
     img3=forms.ImageField(required=False)
     class Meta:
         model=house
-        fields=('owner','contact','type','address','price','apartment','img1','img2','img3')
+        fields=('owner','contact','type','address','price','apartment','img1','img2','img3','userid','houseid')
 
 class password_reset(forms.Form):
     password=forms.CharField(widget=forms.PasswordInput(attrs={'min':6,'id':'password','name':'password'}))

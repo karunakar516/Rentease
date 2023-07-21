@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block body_block%}
+{%load static%}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Search</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0 ml-auto"> 
+      <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search..." aria-label="Search">  
+    </form>
+    </div>
+  </nav>
+  {% if houses %}
+  {% for i in houses %}
+  
+  <div class="container">
+    <div id="card-container">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">{{i.type}} - {{i.apartment}}</h2>
+        </div>
+        <div class="card-body">
+          <div class="slideshow">
+            {% if i.img1 %}
+            <img src="{{ i.img1.url }}">
+            {% endif %}
+            {% if i.img2 %}
+            <img src="{{ i.img2.url }}">
+            {% endif %}
+            {% if i.img3 %}
+            <img src="{{ i.img3.url }}">
+            {% endif %}
+          </div>
+          <script src="{% static 'js/slideshow.js' %}"></script>
+            <p>
+            <b>Address</b>: {{ i.address}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="{% static 'js/search.js' %}"></script>
+</body>
+</html>
+{%  endblock %}

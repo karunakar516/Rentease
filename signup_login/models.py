@@ -10,6 +10,8 @@ class house(models.Model):
     type=models.CharField(max_length=264)
     price=models.IntegerField(null=True)
     owner=models.CharField(max_length=264)
+    userid=models.CharField(max_length=264)
+    houseid=models.IntegerField()
     contact=models.PositiveBigIntegerField()
     img1=models.ImageField(upload_to='house_pics',null=True)
     img2=models.ImageField(upload_to='house_pics',null=True)
