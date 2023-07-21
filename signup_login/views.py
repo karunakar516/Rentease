@@ -23,6 +23,11 @@ def deleteacc(request):
         username=request.POST.get('username')
         if username==user.username:
             x=User.objects.get(username=username)
+            subject="Rentease!!"
+            message="Hi,"+request.user.username+",\n You have successfully deleted account ThankYou Visit again!"
+            from_email=settings.EMAIL_HOST_USER
+            to_mail=[x.email]
+            send_mail(subject,message,from_email,to_mail)
             x.delete()
             return HttpResponseRedirect(reverse('signup_login:home'))
     else:
@@ -33,6 +38,11 @@ def addhouse1(request):
         ahform=addhouse(request.POST,request.FILES)
         if ahform.is_valid:
             ahform.save()
+            subject="Rentease!!"
+            message="Hi,"+request.user.username+",\n You have successfully added house"
+            from_email=settings.EMAIL_HOST_USER
+            to_mail=[request.user.email]
+            send_mail(subject,message,from_email,to_mail)
             return HttpResponseRedirect(reverse('signup_login:home'))
     else:
         ahform=addhouse(initial={'userid':request.user.username})
@@ -43,6 +53,11 @@ def passreset(request):
         user=request.user
         if user.is_active:
             password=request.POST.get('password')
+            subject="Rentease!!"
+            message="Hi,"+request.user.username+",\n You have successfully changed your password"
+            from_email=settings.EMAIL_HOST_USER
+            to_mail=[request.user.email]
+            send_mail(subject,message,from_email,to_mail)
             user.set_password(password)
             user.save()
             login(request,user)
@@ -66,7 +81,13 @@ def house_deletion(request):
     if(request.method=='POST'):
         userid=request.user.username
         x=house.objects.get(userid=userid,houseid=request.POST.get('houseid'))
-        x.delete()
+        if x:
+            subject="Rentease!!"
+            message="Hi,"+request.user.username+",\n You have successfully deleted house at "+x.apartment
+            from_email=settings.EMAIL_HOST_USER
+            to_mail=[request.user.email]
+            send_mail(subject,message,from_email,to_mail)
+            x.delete()
         return HttpResponseRedirect(reverse('signup_login:home'))
     else:
         return render(request,'deletehouse.html')
@@ -86,6 +107,11 @@ def otpverify(request):
                     profile=formsss.save(commit=False)
                     profile.user=user
                     profile.save()
+                    subject="Rentease!!"
+                    message="Hi,"+"\n" +i.username+"ThankYou for registration, You have successfully registered using "+i.email+"\n You can add your houses into website and delete them if they were booked!\n ThankYou!"
+                    from_email=settings.EMAIL_HOST_USER
+                    to_mail=[i.email]
+                    send_mail(subject,message,from_email,to_mail)
                     i.delete()
                     return HttpResponseRedirect(reverse('signup_login:home'))
                 else:
