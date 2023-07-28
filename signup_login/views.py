@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -83,10 +84,10 @@ def house_deletion(request):
         x=house.objects.get(userid=userid,houseid=request.POST.get('houseid'))
         if x:
             subject="Rentease!!"
-            message="Hi,"+request.user.username+",\n You have successfully deleted house at "+x.apartment
+            message=render_to_string('email.html',{'name':userid,'apartment':x.apartment},)
             from_email=settings.EMAIL_HOST_USER
             to_mail=[request.user.email]
-            send_mail(subject,message,from_email,to_mail)
+            send_mail(subject=subject,message="",html_message=message,from_email=from_email,recipient_list=to_mail)
             x.delete()
         return HttpResponseRedirect(reverse('signup_login:home'))
     else:
