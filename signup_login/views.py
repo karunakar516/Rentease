@@ -120,7 +120,6 @@ def otpverify(request):
         else:
             return HttpResponse("wrong otp")
 def register(request):
-    global registered
     registered=False
     if request.method=='POST':
         otp=randint(1000,9999)
@@ -131,7 +130,9 @@ def register(request):
         reppass=request.POST.get('reppass')
         xy=User.objects.all()
         for i in xy:
-            if i.email==email or i.username==username:
+            if i.email==email :
+                return HttpResponse(" user with this email already exists")
+            if i.username==username:
                 return HttpResponse("username already exists")
         xa=current_signup(username=username,password=password,reppass=reppass,email=email,x=x)
         xa.save(True)
@@ -148,8 +149,7 @@ def register(request):
         'form':form,
         'formsss':formsss,
         'registered':registered,
-        'signup':True,
-        
+        'signup':True,     
     })
 def user_login(request):
     if request.method=='POST':
