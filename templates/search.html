@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Card Search</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/cardstyle.css' %}">
   <link rel="stylesheet" href="{% static 'css/search.css' %}">
 </head>
 <body>
@@ -42,7 +43,7 @@
             <img src="{{ i.img3.url }}">
             {% endif %}
           </div>
-          <script src="{% static 'js/slideshow.js' %}"></script>
+          
           <p><b>Owner</b>:{{i.owner}} <br>
             <b>Phone No</b>: {{i.contact}} <br>
             <b>Address</b>: {{ i.address}}
@@ -52,9 +53,10 @@
     </div>
   </div>
   {% endfor %}
+  <script src="{% static 'js/slideshow.js' %}"></script>
   {% endif %}
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
   <script src="{% static 'js/search.js' %}"></script>
 </body>
 </html>

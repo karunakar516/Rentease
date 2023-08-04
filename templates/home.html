@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <title>RentEase</title>
+  <style>
+    .contact .info {
+  border-top: 3px solid #47b2e4;
+  border-bottom: 3px solid #47b2e4;
+  padding: 30px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: #47b2e4;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: #e7f5fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #37517e;
+}
+
+.contact .info p {
+  padding: 0 0 10px 60px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6182ba;
+}
+
+.contact .info .email p {
+  padding-top: 5px;
+}
+
+.contact .info .social-links {
+  padding-left: 60px;
+}
+
+.contact .info .email:hover i,
+.contact .info .address:hover i,
+.contact .info .phone:hover i {
+  background: #47b2e4;
+  color: #fff;
+}
+    @media screen and (max-width:700px)
+    {
+      img{
+        width: 400px;
+      }
+    }
+    @media screen and (max-width:440px)
+    {
+      img{
+        width: 250px;
+      }
+      h1{
+        font-size:large;
+      }
+    }
+    @media screen and (max-width:330px)
+    {
+      img{
+        width: 160px;
+      }
+    }
+    .card
+    {
+      height: 180px;
+    }
+  </style>
+</head>
+<body>
+  <div class="col-xxl-8 px-4 py-5 bg-primary">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="https://cdn-icons-png.flaticon.com/512/2603/2603710.png" width="500" alt="" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <div class="lc-block mb-3">
+                <div editable="rich">
+                    <h1><font style="color: white;">Find houses for rent in any location at affordable cost</font></h1>
+                </div>
+            </div>
+             
+            <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-dark px-4 me-md-2 btn-md" href="#about" role="button">Know more>></a>
+          </div>
+            
+        </div>
+    </div>
+</div>
+<div class="bg-light bg-gradient">
+  <div class="about container" id="about">
+    <br>
+    <h1 align="center"><b>ABOUT US</b></h1>
+    <p>
+      Welcome to RentEase, your go-to platform for finding the perfect home rentals. Our mission is to make the process of finding your dream home effortless and enjoyable. Whether you're searching for a cozy apartment, a spacious house, or a charming vacation rental, we've got you covered.
+    </p>
+    <ul>
+      <li><i class="ri-check-double-line"></i> Explore a wide range of verified rental properties on RentEase</li>
+      <li><i class="ri-check-double-line"></i> Discover your ideal home with our user-friendly interface</li>
+   </ul>
+   <div class="col-lg-6 pt-4 pt-lg-0">
+    <p>
+      Thank you for choosing RentEase. We look forward to being a part of your journey to finding the perfect place you can call home.
+    </p>
+    <a href="{% url 'signup_login:register' %}" style="text-decoration: none;"><button class="btn-primary btn-md">Signup</button></a>
+  </div>
+</div>
+</div>
+<br>
+<div style="background-color: lightgray;">
+  
+  <div class="services container">
+    <br>
+    <h1 align="center"><b>SERVICES</b></h1>
+    <p align="center"><font size="5">Here are some of the services which we provide.</font></p>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Property search made easy</h5>
+            <p class="card-text">Our powerful search and filtering options help you find the ideal property tailored to your needs and preferences.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Expert assistance</h5>
+            <p class="card-text">Our dedicated team of real estate professionals is ready to assist you throughout your home-search journey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Wide range of properties</h5>
+            <p class="card-text">From cozy apartments to luxurious villas, we offer a diverse selection of rental properties to choose from.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Customer support</h5>
+            <p class="card-text">Need help or have questions? Our friendly customer support is just a call or click away.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">OTP based email verification</h5>
+            <p class="card-text">This method enables you to authenticate using the OTP that is sent to the registered email address.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">User friendly interface</h5>
+            <p class="card-text">Our web app has a good,understandable and appealing user friendly interface.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <br>
+    <h1 align="center"><b>CONTACT US</b></h1>
+    <p align="center"><font size="5">Feel free to contact us for any queries.</font></p>
+    </div>
+
+    <div class="row">
+
+      <div class="col  align-items-stretch">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt-fill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+              </svg>
+            </i>
+            <h4>Location:</h4>
+            <p>Visakhapatnam</p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+              </svg>
+            </i>
+            <h4>Email:</h4>
+            <p>rentease5@gmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+              </svg>
+            </i>
+            <h4>Call:</h4>
+            <p>+91 999225554s</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+</section>
+<br>
+
+<footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3 bg-primary text-light">
+    © 2023 Copyright:
+    <b>Team RentEase</b>
+  </div>
+  <!-- Copyright -->
+</footer>
+  </body>
+</html>
+{% endblock %}

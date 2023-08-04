@@ -55,3 +55,15 @@ font-size: inherit;
 input[type="submit"]:hover {
 background-color: #3e8e41;
 }
+.fields{
+    margin-bottom: 10px;
+}
+label{
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+.hk
+{
+    align-self: left;
+}

@@ -12,7 +12,9 @@ from rentease import settings
 from django.core.mail import send_mail
 from .models import current_signup,house
 def index(request):
-    return render(request,'user-new.html')
+    if request.user.is_authenticated:
+        return render(request,'user-new.html')
+    return render(request,'home.html')
 @login_required
 def user_logout(request):
     logout(request)
@@ -70,28 +72,23 @@ def passreset(request):
         return render(request,'password-reset.html',{'form':form})
 @login_required
 def myhouses(request):
-    userid=request.user.username
-    x=house.objects.all()
-    y=[]
-    for i in x:
-        if i.userid==userid:
-            y.append(i)
-    return render(request,'myhouse.html',{'houses':y})
-@login_required
-def house_deletion(request):
-    if(request.method=='POST'):
-        userid=request.user.username
-        x=house.objects.get(userid=userid,houseid=request.POST.get('houseid'))
-        if x:
+    if request.method=="POST":
+        if "delete" in request.POST:
+            id=request.POST.get("id")
+            x=house.objects.get(id=id)
             subject="Rentease!!"
-            message=render_to_string('email.html',{'name':userid,'apartment':x.apartment},)
+            message=render_to_string('email.html',{'name':request.user.username,'apartment':x.apartment},)
             from_email=settings.EMAIL_HOST_USER
             to_mail=[request.user.email]
             send_mail(subject=subject,message="",html_message=message,from_email=from_email,recipient_list=to_mail)
             x.delete()
-        return HttpResponseRedirect(reverse('signup_login:home'))
-    else:
-        return render(request,'deletehouse.html')
+    userid=request.user.username
+    xy=house.objects.all()
+    y=[]
+    for i in xy:
+        if i.userid==userid:
+            y.append(i)
+    return render(request,'myhouse.html',{'houses':y})
 def otpverify(request):
     if request.method=='POST':
         xx=request.POST.get('otp')

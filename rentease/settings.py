@@ -18,8 +18,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 EMAIL_USE_TLS= True
 EMAIL_HOST= 'smtp.gmail.com'
-EMAIL_HOST_USER= 'frproject2415@gmail.com'
-EMAIL_HOST_PASSWORD='uowvldozqefmcdyi'
+EMAIL_HOST_USER= 'rentease5@gmail.com'
+EMAIL_HOST_PASSWORD='dullydpglzrilcoq'
 EMAIL_PORT=587
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 # Quick-start development settings - unsuitable for production

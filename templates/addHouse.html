@@ -9,12 +9,17 @@
     <link rel="stylesheet" href="{% static 'css/addHouse.css' %}">
 </head>
 <body>
-  <form method="post" enctype="multipart/form-data">
+  <center> <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    <div class="fields"><label for="owner"> Owner Name:</label>{{form.owner}} </div>   
+    <div class="fields"><label for="contact">Contact:</label> {{form.contact}} </div>  
+    <div class="fields"><label for="price">Price:</label>{{form.price}}  </div> 
+    <div class="fields"><label for="apartment"> Apartment:</label> {{form.apartment}} </div>  
+    <div class="fields"><label for="address"> Address:</label>  {{form.address}} </div> 
+    {{ form.userid }}
+     {{ form.img1 }}
+    {{ form.img2 }} {{form.img3}}
     <input type="submit" value="add">
-  </form>
-    
-</div>
+  </form></center>
     </body>
 </html>

@@ -21,25 +21,24 @@ class formss(forms.ModelForm):
         model=Signup
         fields=()
 class addhouse(forms.ModelForm):
-    owner=forms.CharField(widget=forms.TextInput(attrs={'type':'text'}))
-    contact=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'type':'number'}))
-    userid=forms.CharField(widget=forms.TextInput(attrs={'readonly':True}))
-    houseid=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'placeholder':'make sure your houseid wont match with your previous houses'}))
+    owner=forms.CharField(widget=forms.TextInput(attrs={'type':'text','id':'owner'}))
+    contact=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'type':'number','id':'contact'}))
+    userid=forms.CharField(widget=forms.TextInput(attrs={'readonly':True,'type':'hidden'}))
     CHOICES=[
         ('1BHK','1BHK'),
         ('2BHK','2BHK'),
         ('3BHK','3BHK')
     ]
-    price=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'type':'number'}))
+    price=forms.IntegerField(widget=forms.NumberInput(attrs={'min':0,'type':'number','id':'price'}))
     type=forms.CharField(widget=forms.RadioSelect(choices=CHOICES))
-    apartment=forms.CharField()
-    address=forms.CharField()
+    apartment=forms.CharField(widget=forms.TextInput(attrs={'id':'apartment'}))
+    address=forms.CharField(widget=forms.TextInput(attrs={'id':'address'}))
     img1=forms.ImageField(required=False)
     img2=forms.ImageField(required=False)
     img3=forms.ImageField(required=False)
     class Meta:
         model=house
-        fields=('owner','contact','type','address','price','apartment','img1','img2','img3','userid','houseid')
+        fields=('owner','contact','type','address','price','apartment','img1','img2','img3','userid')
 
 class password_reset(forms.Form):
     password=forms.CharField(widget=forms.PasswordInput(attrs={'min':6,'id':'password','name':'password'}))

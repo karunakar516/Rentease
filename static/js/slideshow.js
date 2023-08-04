@@ -1,28 +1,52 @@
-var slideIndex = 1;
-showSlide(slideIndex);
+function showSlides() {
+  var slideContainers = document.getElementsByClassName("slideshow");
+
+  for (var i = 0; i < slideContainers.length; i++) {
+    var slideIndex = 0;
+    var slides = slideContainers[i].getElementsByTagName("img");
+
+    function showSlide() {
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].style.display = "none";
+      }
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].style.display = "block";
+      // setTimeout(showSlide, 2000); // Change slide every 2 seconds
+    }
+
+    showSlide();
+  }
+}
 
 document.addEventListener("keydown", function(event) {
-  var slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
-  console.log(slides.length);
-  if (event.key === "ArrowLeft") {
-    slideIndex--;
-    if (slideIndex < 1) {
-      slideIndex = slides.length; // Adjust the number based on the total number of slides
-    }
-    showSlide(slideIndex);
-  } else if (event.key === "ArrowRight") {
-    slideIndex++;
-    if (slideIndex > slides.length) { // Adjust the number based on the total number of slides
-      slideIndex = 1;
-    }
-    showSlide(slideIndex);
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    plusSlides(event.key, 1);
   }
 });
 
-function showSlide(index) {
-  var slides = document.getElementsByClassName("slideshow")[0].getElementsByTagName("img");
-  for (var i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+function plusSlides(key, n) {
+  var slideContainers = document.getElementsByClassName("slideshow");
+
+  for (var i = 0; i < slideContainers.length; i++) {
+    var slides = slideContainers[i].getElementsByTagName("img");
+    var currentSlideIndex = Array.from(slides).findIndex(slide => slide.style.display === "block");
+
+    slides[currentSlideIndex].style.display = "none";
+
+    if (key === "ArrowLeft") {
+      currentSlideIndex--;
+      if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+      }
+    } else if (key === "ArrowRight") {
+      currentSlideIndex++;
+      if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+      }
+    }
+
+    slides[currentSlideIndex].style.display = "block";
   }
-  slides[index - 1].style.display = "block";
 }
+
+showSlides();

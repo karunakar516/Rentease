@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OTP verification</title>
+    <style>
+      .hs{
+            border: 2px outset black;
+  border-radius: 5px;
+  padding: 5px;
+        }
+    </style>
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <form  action="{% url 'signup_login:otpverify' %}" method="post">
-        {% csrf_token %}
-        Username:<input readonly type="text" name="username" value="{{ username }}"><br>
-        enter OTP: <input type="number" min="1000" max="9999" name="otp">
-        <input type="submit" value="verify">
-    </form>
+  <br>
+  <br>
+        <h1 align="center"><b>VERIFY OTP</b></h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-md-offset-7 align-center">
+        <form  action="{% url 'signup_login:otpverify' %}" method="post">
+          {% csrf_token %}
+          <div class="container hs">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input readonly type="text" id="exampleInputEmail1" class="form-control" name="username" value="{{ username }}">
+            </div>
+            <div class="form-group">
+              <label for="example1">Enter OTP</label>
+              <input type="number" class="form-control" id="example1" min="1000" max="9999" name="otp">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Verify">
+          </div>  
+      </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,86 @@
+
+.card:not(:hover){
+    margin: 13px;
+    border-radius: 15px;
+    padding: 0px;
+    transition: .1s;
+}
+.card-header {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.card-header h2
+{
+    color: rgb(25, 25, 25);
+    padding: 10px;
+}
+.card:not(:hover) .card-title
+{
+    margin: 0px;
+    border: 2px solid #2990ff;
+    border-radius: 15px;
+    padding: 17px;
+    background-color: #2990ff;
+    color: aliceblue;
+    transition: .1s;
+}
+
+.card:hover + .card-header h2
+{
+    margin: 0px;
+    border-radius: 15px;
+    padding: 0px;
+    transition: .1s;
+    font-size: 1.2em;
+    background-color: rgb(25, 25, 25);
+    color: #ffffff;
+}
+.card:hover .card-title
+{
+    margin: 0px;
+    border: 2px solid #2990ff;
+    border-radius: 15px;
+    padding: 17px;
+    background-color: #2990ff;
+    color: aliceblue;
+    transition: .1s;
+    font-size: 1.9em;
+}
+.buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding-top: 2.5rem;
+    position: sticky;
+    bottom: 0;
+    padding-bottom: 1rem;
+
+    background: linear-gradient(rgba(255, 255, 255, 0),aliceblue
+    ,aliceblue
+    );
+
+}
+button {
+    border: 1px solid rgb(25, 25, 25);
+    height: 100px;
+    width: 225px;
+    font-size: 1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 30px;
+    background-color:rgb(25, 25, 25);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    border: 1px solid rgb(25, 25, 25);
+    font-size: 1.2rem;
+    color: rgb(35, 35, 35);
+    background-color:rgba(255, 255, 255, 0);
+    transition: .1s;
+}
