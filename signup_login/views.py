@@ -93,8 +93,8 @@ def otpverify(request):
     if request.method=='POST':
         xx=request.POST.get('otp')
         yy=request.POST.get('username')
-        xnxx=current_signup.objects.all()
-        for i in xnxx:
+        current=current_signup.objects.all()
+        for i in current:
             if int(i.x)==int(xx) and yy==i.username:
                 form=signup_form({'username':i.username,'password':i.password,'email':i.email,'reppass':i.reppass})
                 formsss=formss(data=request.POST)
