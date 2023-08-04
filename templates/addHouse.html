@@ -13,6 +13,8 @@
     {% csrf_token %}
     <div class="fields"><label for="owner"> Owner Name:</label>{{form.owner}} </div>   
     <div class="fields"><label for="contact">Contact:</label> {{form.contact}} </div>  
+    Type:
+    {{form.type}}
     <div class="fields"><label for="price">Price:</label>{{form.price}}  </div> 
     <div class="fields"><label for="apartment"> Apartment:</label> {{form.apartment}} </div>  
     <div class="fields"><label for="address"> Address:</label>  {{form.address}} </div> 
