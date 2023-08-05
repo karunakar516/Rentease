@@ -12,6 +12,52 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <title>RentEase</title>
   <style>
+.fade-in-text {
+  font-family: Arial;
+  font-size: 60px;
+  animation: fadeIn 5s;
+  -webkit-animation: fadeIn 5s;
+  -moz-animation: fadeIn 5s;
+  -o-animation: fadeIn 5s;
+  -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
     .contact .info {
   border-top: 3px solid #47b2e4;
   border-bottom: 3px solid #47b2e4;
@@ -92,21 +138,28 @@
   </style>
 </head>
 <body>
-  <div class="col-xxl-8 px-4 py-5 bg-primary">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <img src="https://cdn-icons-png.flaticon.com/512/2603/2603710.png" width="500" alt="" loading="lazy">
+  <!-- <div class="col-xxl-8 px-4 py-5 bg-primary" style="background-image: url(media/back.jpg) ">
+     -->
+     <div class="col-xxl-8 px-4 py-5 bg-primary" style="background-image: linear-gradient(to bottom, transparent, transparent,rgba(0, 0, 0, 0.688),rgba(0, 0, 0, 0.885)), url('media/back.jpg');">
+    <!-- <img src="https://www.archiwingstudio.com/wp-content/uploads/2022/08/Landscape_1-min-scaled.jpg" alt="" height="500" width="500"> -->
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5" >
+            <img src="media/null.jpeg" style="opacity: 0;" width="500" height="300" alt="" loading="lazy">
         </div>
         <div class="col-lg-6">
             <div class="lc-block mb-3">
                 <div editable="rich">
-                    <h1><font style="color: white;">Find houses for rent in any location at affordable cost</font></h1>
-                </div>
+                  <div class="fade-in-text">
+                    <h1><font style=" font-size: large;  color: rgb(247, 240, 240);    -webkit-text-stroke: 1px rgb(249, 247, 247);
+                      text-shadow: 3px 3px black; font:small-caps bold 36px/1 sans-serif;">Find houses for rent in any location at affordable cost</font></h1>
+              </div>  
+              </div>
             </div>
              
-            <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-dark px-4 me-md-2 btn-md" href="#about" role="button">Know more>></a>
+            <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start"><a class="btn btn-dark px-4 me-md-2 btn-md" href="#about" role="button" style="background-color: #2990ff; font-weight: bold; color: black;">Know more>></a>
           </div>
-            
+          <!-- <div class="row flex-lg-row-reverse align-items-center g-5 py-5" >
+            <img src="media/null.jpeg" style="opacity: 0;" width="500" height="50" alt="" loading="lazy">
+        </div>   -->
         </div>
     </div>
 </div>
