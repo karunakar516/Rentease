@@ -34,6 +34,7 @@ DEBUG = True
 ALLOWED_HOSTS =[
     'karunakar516.pythonanywhere.com',
     'karunakar516.pythonanywhere.com' ,
+    'rentease.onrender.com',
     '127.0.0.1'
 ]
 
